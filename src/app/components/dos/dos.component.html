@@ -1,0 +1,30 @@
+<p>dos works!</p>
+<div>
+    <form [formGroup]="formularioLogin" (submit)="onsubmit()">
+        <label>Nombre: </label>
+       
+        
+        <input name= "name" type="text" formControlName="name">
+        <label appValidacion *ngIf="formularioLogin.get('name')?.errors && formularioLogin.get('name')?.touched && formularioLogin.get('name')?.dirty" > Tamaño no definido </label>
+        <label>Email:</label>
+      
+        <label *ngIf="formularioLogin.get('email')?.errors && formularioLogin.get('email')?.touched && formularioLogin.get('email')?.dirty" >Campo requerido </label>
+        <input name= "email" type="text" formControlName="email">
+       
+        <label>Password</label>
+        
+        <label *ngIf="formularioLogin.get('password')?.errors && formularioLogin.get('password')?.touched && formularioLogin.get('password')?.dirty" >Contraseña requerido </label>
+        <input name= "password" type="password" formControlName="password">
+
+        <label  >Telefono:   {{formularioLogin.get('telefono')?.errors | json }}</label>
+       
+        <label *ngIf="formularioLogin.get('telefono')?.errors && formularioLogin.get('telefono')?.touched && formularioLogin.get('telefono')?.dirty" > Solo se agregan numeros</label>
+       
+        <input  appValidacion name= "telefono" type="text" formControlName="telefono">
+
+        <p id="texto" #texto appValidacion  >Hola!</p>
+
+        <button  [disabled] ="formularioLogin.invalid && formularioLogin.dirty" role="submit" type="submit">Save</button>
+    </form>
+</div>
+
